@@ -1,0 +1,23 @@
+.formtable {
+	padding: 10px;
+	border: 1px solid blue;
+}
+
+input[type=text] {
+	width: 250px;
+	padding-left:10px;
+}
+
+textarea {
+	width: 250px;
+	heigth: 300px;
+	padding-left:10px;
+}
+
+.label {
+	text-align: right;
+	vertical-align: top;
+}
+
+.control{
+	
