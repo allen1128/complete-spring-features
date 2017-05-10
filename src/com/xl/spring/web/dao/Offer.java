@@ -1,9 +1,22 @@
 package com.xl.spring.web.dao;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.xl.spring.web.validation.ValidEmail;
+
 public class Offer {
 	private int id;
+	
+	@Size(min=5, max=100, message="Name must be between 5 and 100 characters:")
 	private String name;
+	
+	@NotNull
+	//@Pattern(regexp=".*\\@.*\\..*", message="This is an invalid email address:")
+	@ValidEmail(min=7, message="This is an invalid email address")
 	private String email;
+	
+	@Size(min=5, max=100, message="Text must be between 5 and 100 characters:")
 	private String text;
 	
 	public Offer() {		

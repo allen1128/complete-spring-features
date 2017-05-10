@@ -5,13 +5,13 @@
 
 input[type=text] {
 	width: 250px;
-	padding-left:10px;
+	padding-left: 10px;
 }
 
 textarea {
 	width: 250px;
 	heigth: 300px;
-	padding-left:10px;
+	padding-left: 10px;
 }
 
 .label {
@@ -19,5 +19,17 @@ textarea {
 	vertical-align: top;
 }
 
-.control{
+.error {
+	font-size: small;
+	color: red;
+	margin-left: 10px;
+}
+
+.offers {
+	padding: 10px;
+	border: 1px solid gray;
+}
+
+.control {
 	
+}
