@@ -31,5 +31,10 @@ textarea {
 }
 
 .control {
-	
+	margin-left: 10px;	
+}
+
+span.loginerror{
+	font-size:medium;
+	color:red;
 }
