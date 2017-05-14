@@ -5,8 +5,12 @@
 
 input[type=text] {
 	width: 250px;
-	padding-left: 10px;
 }
+
+input[type=password] {
+	width: 250px;
+}
+
 
 textarea {
 	width: 250px;
@@ -23,6 +27,12 @@ textarea {
 	font-size: small;
 	color: red;
 	margin-left: 10px;
+}
+
+.valid {
+	font-size: small;
+	margin-left: 10px;
+	color: green;
 }
 
 .offers {
