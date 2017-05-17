@@ -10,7 +10,7 @@
 	<context:annotation-config></context:annotation-config>
 	<context:component-scan base-package="com.xl.spring.web.dao"></context:component-scan>
 
-	<beans profile="production">		
+	<beans profile="production">
 		<jee:jndi-lookup id="dataSource" jndi-name="jdbc/spring"
 			expected-type="javax.sql.DataSource">
 		</jee:jndi-lookup>
@@ -20,6 +20,6 @@
 		</bean>
 		<tx:annotation-driven />
 	</beans>
-	
-	
+
+
 </beans>
