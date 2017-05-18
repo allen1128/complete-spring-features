@@ -22,20 +22,26 @@ public class User {
 	@ValidEmail
 	private String email;
 	
+	@NotBlank
+	@Size(min=6, max=60)
+	private String name;
+	
 	private boolean enabled = false;
 	private String authority; 
 	
 	public User() {
 		super();
 	}
-	public User(String username, String password, boolean enabled, String authority, String email) {
+	public User(String username, String password, boolean enabled, String authority, String name, String email) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
 		this.authority = authority;
 		this.email = email;
+		this.name = name;
 	}
+	
 	public String getUsername() {
 		return username;
 	}
@@ -68,6 +74,11 @@ public class User {
 	}
 	
 
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", password=" + password + ", email=" + email + ", name=" + name
+				+ ", enabled=" + enabled + ", authority=" + authority + "]";
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -105,6 +116,12 @@ public class User {
 		} else if (!username.equals(other.username))
 			return false;
 		return true;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

@@ -68,4 +68,9 @@
 		<put-attribute name="title" value="Create Offer"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/createoffer.jsp"></put-attribute>
 	</definition>
+
+	<definition name="offerdeleted" extends="base">
+		<put-attribute name="title" value="Offer Deleted"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/offerdeleted.jsp"></put-attribute>
+	</definition>
 </tiles-definitions>

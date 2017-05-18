@@ -36,12 +36,11 @@ public class UserDaoTest {
 	public void init() {
 		JdbcTemplate jdbc = new JdbcTemplate(dataSource);
 		jdbc.execute("delete from users");
-		jdbc.execute("delete from authorities");
 	}
 
 	@Test
 	public void testCreateUser() {
-		User user = new User("user", "pass", true, "ROLE_USER", "test@test.com");		
+		User user = new User("user", "pass", true, "ROLE_USER", "Jone Joe", "test@test.com");		
 		assertTrue("User creation should return true", userDao.create(user));
 		List<User> users = userDao.getAllUsers();
 		assertEquals("Number of users should be one", 1, users.size());

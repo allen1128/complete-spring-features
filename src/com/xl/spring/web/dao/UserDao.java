@@ -23,7 +23,7 @@ public class UserDao {
 	public void setDataSource(DataSource jdbc) {
 		this.jdbc = new NamedParameterJdbcTemplate(jdbc);
 	}
-	
+
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -38,19 +38,19 @@ public class UserDao {
 
 	@Transactional
 	public boolean create(User user) {
-		//BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(user);
+		// BeanPropertySqlParameterSource params = new
+		// BeanPropertySqlParameterSource(user);
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("username", user.getUsername());
 		params.addValue("password", passwordEncoder.encode(user.getPassword()));
 		params.addValue("email", user.getEmail());
 		params.addValue("enabled", user.isEnabled());
+		params.addValue("name", user.getName());
 		params.addValue("authority", user.getAuthority());
-		
-		
-		jdbc.update(
-				"insert into users (username, password, email, enabled) values (:username, :password, :email, :enabled)",
-				params);
-		return jdbc.update("insert into authorities (username, authority) values (:username, :authority)", params) == 1;
+
+		return jdbc.update(
+				"insert into users (username, password, email, enabled, name, authority) values (:username, :password, :email, :enabled, :name, :authority)",
+				params) == 1;
 	}
 
 	public boolean exists(String username) {
@@ -59,7 +59,7 @@ public class UserDao {
 	}
 
 	public List<User> getAllUsers() {
-		return jdbc.query("select * from users, authorities where users.username = authorities.username",
+		return jdbc.query("select * from users",
 				BeanPropertyRowMapper.newInstance(User.class));
 	}
 }
