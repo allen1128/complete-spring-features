@@ -26,25 +26,44 @@ import com.xl.spring.web.dao.UserDao;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UserDaoTest {
 
-	@Autowired
+	@Autowired 
 	private UserDao userDao;
 
 	@Autowired
 	private DataSource dataSource;
+			
+	private User user1 = new User("username1", "password1", true, "ROLE_ADMIN", "User One", "user1@test.com");
+	private User user2 = new User("username2", "password2", true, "ROLE_ADMIN", "User Two", "user2@test.com");
+	private User user3 = new User("username3", "password3", true, "ROLE_ADMIN", "User Three", "user3@test.com");
+	private User user4 = new User("username4", "password4", true, "ROLE_ADMIN", "User Four", "user4@test.com");
 
 	@Before
 	public void init() {
 		JdbcTemplate jdbc = new JdbcTemplate(dataSource);
 		jdbc.execute("delete from users");
 	}
-
+	
 	@Test
+	public void testCreateRetrieve(){
+		userDao.create(user1);
+		List<User> users = userDao.getAllUsers();		
+		assertEquals(1,  users.size());
+		assertEquals(user1, users.get(0));
+		userDao.create(user2);
+		userDao.create(user3);
+		userDao.create(user4);
+		
+		users = userDao.getAllUsers();		
+		assertEquals(4,  users.size());
+	}
+
+	/*@Test
 	public void testCreateUser() {
 		User user = new User("user", "pass", true, "ROLE_USER", "Jone Joe", "test@test.com");		
-		assertTrue("User creation should return true", userDao.create(user));
+		userDao.create(user);
 		List<User> users = userDao.getAllUsers();
 		assertEquals("Number of users should be one", 1, users.size());
 		assertTrue(userDao.exists("user"));
 		assertEquals(user, users.get(0));
-	}
+	}*/
 }

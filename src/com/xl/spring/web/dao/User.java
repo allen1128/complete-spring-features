@@ -1,5 +1,9 @@
 package com.xl.spring.web.dao;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -7,23 +11,27 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import com.xl.spring.web.validation.ValidEmail;
 
+@Entity
+@Table(name="users")
 public class User {
 
-	@NotBlank
-	@Size(min=8, max=15)
-	@Pattern(regexp="^\\w{8,}$")
+	@NotBlank(groups={PersistenceValidationGroup.class, FormValidationGroup.class})
+	@Size(min=8, max=15, groups={PersistenceValidationGroup.class, FormValidationGroup.class})
+	@Pattern(regexp="^\\w{8,}$", groups={PersistenceValidationGroup.class, FormValidationGroup.class})
+	@Id
+	@Column(name="username")
 	private String username;
 	
-	@NotBlank
-	@Size(min=6, max=20)
-	@Pattern(regexp="^\\S+$")
+	@NotBlank(groups={PersistenceValidationGroup.class, FormValidationGroup.class})
+	@Size(min=6, max=20,groups={FormValidationGroup.class})
+	@Pattern(regexp="^\\S+$", groups={PersistenceValidationGroup.class, FormValidationGroup.class})
 	private String password;
 	
-	@ValidEmail
+	@ValidEmail(groups={PersistenceValidationGroup.class, FormValidationGroup.class})
 	private String email;
 	
 	@NotBlank
-	@Size(min=6, max=60)
+	@Size(min=6, max=60, groups={PersistenceValidationGroup.class, FormValidationGroup.class})
 	private String name;
 	
 	private boolean enabled = false;

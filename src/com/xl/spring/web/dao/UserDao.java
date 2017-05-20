@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -14,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 @Component("userDao")
 public class UserDao {
 
@@ -26,7 +29,14 @@ public class UserDao {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private SessionFactory sessionFactory;
 
+	public Session session(){
+		return sessionFactory.getCurrentSession();
+	}
+	
 	@Transactional
 	public int[] create(List<Offer> offers) {
 
@@ -37,20 +47,9 @@ public class UserDao {
 	}
 
 	@Transactional
-	public boolean create(User user) {
-		// BeanPropertySqlParameterSource params = new
-		// BeanPropertySqlParameterSource(user);
-		MapSqlParameterSource params = new MapSqlParameterSource();
-		params.addValue("username", user.getUsername());
-		params.addValue("password", passwordEncoder.encode(user.getPassword()));
-		params.addValue("email", user.getEmail());
-		params.addValue("enabled", user.isEnabled());
-		params.addValue("name", user.getName());
-		params.addValue("authority", user.getAuthority());
-
-		return jdbc.update(
-				"insert into users (username, password, email, enabled, name, authority) values (:username, :password, :email, :enabled, :name, :authority)",
-				params) == 1;
+	public void create(User user) {
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		session().save(user);
 	}
 
 	public boolean exists(String username) {
@@ -58,8 +57,8 @@ public class UserDao {
 				new MapSqlParameterSource("username", username), Integer.class) == 1;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<User> getAllUsers() {
-		return jdbc.query("select * from users",
-				BeanPropertyRowMapper.newInstance(User.class));
+		return session().createQuery("from User").list();
 	}
 }
