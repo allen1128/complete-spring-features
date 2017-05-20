@@ -45,6 +45,8 @@
 			access="permitAll" />
 		<security:intercept-url pattern="/accountcreated"
 			access="permitAll" />
+		<security:intercept-url pattern="/message"
+			access="permitAll" />
 		<security:intercept-url pattern="/denied"
 			access="permitAll" />
 		<security:intercept-url pattern="/login"
