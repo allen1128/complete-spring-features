@@ -1,8 +1,10 @@
 package com.xl.spring.web.test.tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.awt.color.ICC_ColorSpace;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -57,13 +59,10 @@ public class UserDaoTest {
 		assertEquals(4,  users.size());
 	}
 
-	/*@Test
-	public void testCreateUser() {
-		User user = new User("user", "pass", true, "ROLE_USER", "Jone Joe", "test@test.com");		
-		userDao.create(user);
-		List<User> users = userDao.getAllUsers();
-		assertEquals("Number of users should be one", 1, users.size());
-		assertTrue(userDao.exists("user"));
-		assertEquals(user, users.get(0));
-	}*/
+	@Test
+	public void testExists(){
+		userDao.create(user2);
+		assertTrue(userDao.exists(user2.getUsername()));
+		assertFalse(userDao.exists("noexist"));
+	}
 }
