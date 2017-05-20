@@ -14,7 +14,6 @@ public class OfferRowMapper implements RowMapper<Offer>{
 		user.setEnabled(true);
 		user.setEmail(rs.getString("email"));
 		user.setUsername(rs.getString("username"));
-		user.setAuthority(rs.getString("authority"));
 		Offer offer = new Offer();
 		offer.setId(rs.getInt("id"));
 		offer.setText(rs.getString("text"));
