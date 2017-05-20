@@ -40,5 +40,4 @@ public class UserService {
 	public User getUser(String username){
 		return userDao.getUser(username);
 	}
-
 }

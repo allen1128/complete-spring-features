@@ -2,9 +2,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <h2>Send Message</h2>
-
-User : ${fromUser}
-
 <sf:form method="POST" commandName="message">
 	<input type="hidden"  name="_flowExecutionKey" value="${flowExecutionKey}" />
 	<input type="hidden" name="_eventId" value="send" />	
