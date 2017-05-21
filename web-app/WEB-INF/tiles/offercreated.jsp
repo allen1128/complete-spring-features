@@ -1,1 +1,1 @@
-Offer created: <a href="${pageContext.request.contextPath}/offers">Click here to the offer list</a> 
+Offer created: <a href="${pageContext.request.contextPath}/">Click here to the offer list</a> 

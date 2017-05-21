@@ -48,6 +48,10 @@ span.loginerror {
 	color: red;
 }
 
+div.toolbar {
+	padding: 10px 0px 10px 40px;
+}
+
 div.content {
 	position: relative;
 	padding: 40px;
@@ -80,4 +84,68 @@ a.title {
 
 input.delete {
 	bolder: 1px solid red;
+}
+
+table.offers td {
+	border-bottom: 1px dashed brown;
+	padding-bottom: 5px;
+}
+
+td.name {
+	width: 100px;
+	vertical-align: top;
+}
+
+td.contact {
+	width: 100px;
+	padding: 0px 10px;
+	vertical-align: top;
+}
+
+div.message {
+	margin-bottom: 20px;
+	border-bottom: 1px dashed brown;
+}
+
+span.subject {
+	font-size: large;
+	color: brown;
+	font-weight: bold;
+}
+
+span.messageBody {
+	display: block;
+	font-style: italic;
+}
+
+span.name {
+	font-size: medium;
+	color: brown;
+}
+
+form.replyform {
+	padding: 20px;
+	display: none;
+}
+
+textarea.replyarea {
+	width: 400px;
+	height: 250px;
+}
+
+input.replybutton {
+	margin-top: 2px;
+	display: block;
+	font-size: large;
+	border: 1px solid gray;
+}
+
+a.replylink{
+	color:brown;
+}
+
+span.alert{
+	display:block;
+	font-weight:bold;
+	color:green;
 }

@@ -3,8 +3,6 @@ package com.xl.spring.web.controllers;
 import java.security.Principal;
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.sap.security.api.keystore.secudePSE;
 import com.xl.spring.web.dao.FormValidationGroup;
 import com.xl.spring.web.dao.Offer;
-import com.xl.spring.web.dao.OffersDao;
 import com.xl.spring.web.service.OffersService;
 
 @Controller
@@ -28,14 +24,6 @@ public class OffersController {
 	@Autowired
 	public void setOffersService(OffersService offersService) {
 		this.offersService = offersService;
-	}
-
-	@RequestMapping("/offers")
-	public String showOffers(Model model) {
-		List<Offer> offers = offersService.getCurrent();
-		model.addAttribute("name", "<b>Tiffany</b>");
-		model.addAttribute("offers", offers);
-		return "offers";
 	}
 
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
