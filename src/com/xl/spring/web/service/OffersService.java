@@ -1,17 +1,12 @@
 package com.xl.spring.web.service;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
-import java.util.List;
-import java.util.jar.Attributes.Name;
-
-import org.eclipse.jdt.internal.compiler.ast.NumberLiteral;
+import com.xl.spring.web.dao.Offer;
+import com.xl.spring.web.dao.OffersDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
-import com.xl.spring.web.dao.Offer;
-import com.xl.spring.web.dao.OffersDao;
+import java.util.List;
 
 @Service("offersService")
 public class OffersService {

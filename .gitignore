@@ -4,3 +4,5 @@
 .springBeans
 /target/
 /bin/
+.idea/
+offers.iml
